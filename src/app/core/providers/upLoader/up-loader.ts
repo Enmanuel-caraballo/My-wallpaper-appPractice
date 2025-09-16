@@ -21,23 +21,24 @@ export class UpLoader {
   }
 
   async getUrl(bucket: string, path: string): Promise<string>{
-    
+
     const {data, error} = await supabase.storage.from(bucket).createSignedUrl(path, 60);
 
     return data?.signedUrl || '';
   }
 
-  async getUrls(bucket: string, path: string[]){
 
-    const d = await supabase.storage.from(bucket).list('', {
-      limit: 10,
-      offset: 0,
-    }
-  ).then((objeto) =>{
-   return objeto.data?.map(p => p.name)
-  })
+  // async getUrls(bucket: string, path: string[]){
 
-  // const {data, error} = await supabase.storage.from(bucket).createSignedUrls(path, 60)
+  //   const d = await supabase.storage.from(bucket).list('', {
+  //     limit: 10,
+  //     offset: 0,
+  //   }
+  // ).then((objeto) =>{
+  //  return objeto.data?.map(p => p.name)
+  // })
 
-  }
+  //const {data, error} = await supabase.storage.from(bucket).createSignedUrls(path, 60)
+
+  // }
 }

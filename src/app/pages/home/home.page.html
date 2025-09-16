@@ -5,25 +5,46 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-<br>
-<br>
-<br>
-<app-button
+
+<!-- <app-button
 value="Pick image"
 color="danger"
-(click) = 'pickImage()'></app-button>
+(click) = 'pickImage()'></app-button> -->
 <!-- <pre>{{img | json}}</pre> -->
+ <ion-card-content class="container-carta">
 <ion-card *ngFor="let item of imgUrl; index as i">
   @if (imgUrl) {
-   <img [src]="imgUrl[i]">
+   <img [src]="imgUrl[i]" style="width: 120px; height: 200px;">
   }
 
 </ion-card>
+
+</ion-card-content>
+<!-- 
 <app-button
 type="submit"
 value="Log out"
 color="primary"
 (click)="logOut()">
+</app-button> -->
 
-</app-button>
+<ion-fab slot="fixed" vertical="bottom" horizontal="end" >
+<app-floating-button
+color="primary"
+(click)="pickImage()"
+name="add"
+horizontal="end"
+>
+
+</app-floating-button>
+
+<app-floating-button
+color="danger"
+(click)="logOut()"
+name="exit"
+style="margin: 0.5px;"
+>
+</app-floating-button>
+</ion-fab>
+
 </ion-content>
