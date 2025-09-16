@@ -1,0 +1,75 @@
+<ion-content [fullscreen]="true">
+  <form [formGroup]="registerForm" (ngSubmit)="doRegister()">
+
+    <ion-card>
+
+        <ion-row>
+          <ion-col>
+            <app-input
+            type="text"
+            label="Name"
+            placeholder="Enmanuel"
+            labelPlacement="floating"
+            [control]="name"
+            >
+            </app-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <app-input
+            type="text"
+            label="Last name"
+            placeholder="Caraballo"
+            labelPlacement="floating"
+            [control]="lastName"
+            >
+            </app-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <app-input
+            type="email"
+            label="Email"
+            placeholder="exampleEmail@gmail.com"
+            labelPlacement="floating"
+            [control]="email"
+            >
+            </app-input>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col>
+            <app-input
+            type="password"
+            label="Password"
+            placeholder="**************"
+            labelPlacement="floating"
+            [control]="password"
+            >
+
+            </app-input>
+            </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+
+            <app-button
+            type="submit"
+            color="primary"
+            [disabled]="registerForm.invalid"
+            value="Log in">
+            </app-button>
+
+            </ion-col>
+        </ion-row>
+
+    </ion-card>
+
+  </form>
+
+</ion-content>

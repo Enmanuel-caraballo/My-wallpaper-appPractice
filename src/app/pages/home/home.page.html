@@ -1,0 +1,29 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>home</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+<br>
+<br>
+<br>
+<app-button
+value="Pick image"
+color="danger"
+(click) = 'pickImage()'></app-button>
+<!-- <pre>{{img | json}}</pre> -->
+<ion-card *ngFor="let item of imgUrl; index as i">
+  @if (imgUrl) {
+   <img [src]="imgUrl[i]">
+  }
+
+</ion-card>
+<app-button
+type="submit"
+value="Log out"
+color="primary"
+(click)="logOut()">
+
+</app-button>
+</ion-content>

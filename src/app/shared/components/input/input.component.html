@@ -1,0 +1,16 @@
+ <ion-input
+  class="border_blue"
+        [type]="type"
+        [label]="label"
+        [placeholder]="placeholder"
+        labelPlacement="floating"
+        (keyup) = 'onType($event);'
+>
+@if (type ==='password') {
+<ion-input-password-toggle slot="end"></ion-input-password-toggle>
+}
+</ion-input>
+
+<!-- @if(hasError){
+      <ion-text color="danger">The input is required</ion-text>
+} -->
