@@ -12,7 +12,8 @@ color="danger"
 (click) = 'pickImage()'></app-button> -->
 <!-- <pre>{{img | json}}</pre> -->
  <ion-card-content class="container-carta">
-<ion-card *ngFor="let item of imgUrl; index as i">
+<ion-card *ngFor="let item of imgUrl; index as i"
+button (click)="callPlugin()">
   @if (imgUrl) {
    <img [src]="imgUrl[i]" style="width: 120px; height: 200px;">
   }
@@ -20,7 +21,7 @@ color="danger"
 </ion-card>
 
 </ion-card-content>
-<!-- 
+<!--
 <app-button
 type="submit"
 value="Log out"

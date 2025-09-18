@@ -3,5 +3,5 @@ import { environment } from 'src/environments/environment'
 
 // Create a single supabase client for interacting with your database
 export const supabase = createClient(
-  environment.supaBaseUrl,
-   environment.subaseApiKey)
+  environment.SUPA_BASE.supaBaseUrl,
+   environment.SUPA_BASE.subaseApiKey)

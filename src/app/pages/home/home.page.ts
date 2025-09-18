@@ -4,6 +4,7 @@ import { Auth } from 'src/app/core/providers/auth/auth';
 import { File } from 'src/app/core/providers/file/file';
 import { UpLoader } from 'src/app/core/providers/upLoader/up-loader';
 import { IImage } from 'src/interfaces/image.interface';
+import myCustomPlugin from 'src/app/plugins/myCustomPlugin';
 
 @Component({
   selector: 'app-home',
@@ -45,6 +46,13 @@ export class HomePage implements OnInit {
 
        this.imgUrl.push(this.image);
 
+
+  }
+
+  public async callPlugin(){
+    console.log('Calling plugin...');
+    const resp = await myCustomPlugin.execute();
+    console.log('LOG: RESPONSE FROM PLUGIN', JSON.stringify(resp));
 
   }
 
