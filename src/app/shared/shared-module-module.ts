@@ -8,11 +8,13 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { User } from './services/user/user';
 import { FloatingButtonComponent } from './components/floating-button/floating-button.component';
 import { CardComponent } from './components/card/card.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { SheetModalComponent } from './components/sheet-modal/sheet-modal.component';
 
 
 
 const modules = [IonicModule, RouterModule, FormsModule, ReactiveFormsModule]
-const components = [InputComponent, ButtonComponent, FloatingButtonComponent,CardComponent ]
+const components = [InputComponent, ButtonComponent, FloatingButtonComponent,CardComponent, ModalComponent, SheetModalComponent]
 const providers = [User]
 
 @NgModule({

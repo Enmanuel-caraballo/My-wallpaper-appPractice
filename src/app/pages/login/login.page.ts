@@ -22,7 +22,7 @@ export class LoginPage implements OnInit {
 
   public async onLogin(){
     console.log(this.loginForm.value);
-    this.authSrv.login(this.email.value, this.password.value);
+   await this.authSrv.login(this.email.value, this.password.value);
 
   }
 

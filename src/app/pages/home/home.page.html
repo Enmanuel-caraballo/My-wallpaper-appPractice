@@ -6,21 +6,31 @@
 
 <ion-content [fullscreen]="true">
 
+
 <!-- <app-button
 value="Pick image"
 color="danger"
 (click) = 'pickImage()'></app-button> -->
 <!-- <pre>{{img | json}}</pre> -->
+
+
+
  <ion-card-content class="container-carta">
-<ion-card *ngFor="let item of imgUrl; index as i"
-button (click)="callPlugin()">
+  <app-card>
+    
+  </app-card>
+<!-- <ion-card *ngFor="let item of imgUrl; index as i"
+button id="open-modal" expand="block">
   @if (imgUrl) {
    <img [src]="imgUrl[i]" style="width: 120px; height: 200px;">
   }
 
-</ion-card>
+  <app-modal></app-modal>
+</ion-card> -->
+
 
 </ion-card-content>
+
 <!--
 <app-button
 type="submit"
@@ -47,5 +57,8 @@ style="margin: 0.5px;"
 >
 </app-floating-button>
 </ion-fab>
+
+
+
 
 </ion-content>

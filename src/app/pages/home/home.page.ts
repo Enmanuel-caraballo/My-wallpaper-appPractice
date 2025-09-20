@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Auth } from 'src/app/core/providers/auth/auth';
 import { File } from 'src/app/core/providers/file/file';
+import { GlobalUrl } from 'src/app/core/providers/globalUrl/global-url';
 import { UpLoader } from 'src/app/core/providers/upLoader/up-loader';
 import { IImage } from 'src/interfaces/image.interface';
-import myCustomPlugin from 'src/app/plugins/myCustomPlugin';
+// import myCustomPlugin from 'src/app/plugins/myCustomPlugin';
+// import { Preferences } from '@capacitor/preferences'
 
 @Component({
   selector: 'app-home',
@@ -14,11 +16,14 @@ import myCustomPlugin from 'src/app/plugins/myCustomPlugin';
 })
 export class HomePage implements OnInit {
   public img!: IImage;
-  public imgUrl: string[] = [];
+  // public imgUrl: string[] = [];
   public image: string = '';
 
-  constructor(private readonly authSrv: Auth, private readonly router: Router, private readonly fileSrv: File,
+  constructor(private readonly authSrv: Auth,
+    private readonly router: Router,
+    private readonly fileSrv: File,
     private readonly uploaderSrv: UpLoader,
+    private readonly urlSrv: GlobalUrl,
   ) { }
 
   ngOnInit() {
@@ -44,16 +49,19 @@ export class HomePage implements OnInit {
 
        this.image = await this.uploaderSrv.getUrl('images', path);
 
-       this.imgUrl.push(this.image);
+      //  this.imgUrl.push(this.image);
 
+       this.urlSrv.setUrl(this.image); //Seteamos la url para hacerla global con el servicio
 
-  }
-
-  public async callPlugin(){
-    console.log('Calling plugin...');
-    const resp = await myCustomPlugin.execute();
-    console.log('LOG: RESPONSE FROM PLUGIN', JSON.stringify(resp));
+       this.urlSrv.addUrl(this.image);//Array glodal de imagenes
 
   }
+
+  // public async callPlugin(){
+  //   console.log('Calling plugin...');
+  //   const resp = await myCustomPlugin.execute();
+  //   console.log('LOG: RESPONSE FROM PLUGIN', JSON.stringify(resp));
+
+  // }
 
 }

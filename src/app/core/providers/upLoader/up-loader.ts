@@ -22,7 +22,7 @@ export class UpLoader {
 
   async getUrl(bucket: string, path: string): Promise<string>{
 
-    const {data, error} = await supabase.storage.from(bucket).createSignedUrl(path, 60);
+    const {data, error} = await supabase.storage.from(bucket).createSignedUrl(path, 86400);
 
     return data?.signedUrl || '';
   }
