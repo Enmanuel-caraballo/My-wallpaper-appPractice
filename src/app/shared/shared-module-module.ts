@@ -10,10 +10,11 @@ import { FloatingButtonComponent } from './components/floating-button/floating-b
 import { CardComponent } from './components/card/card.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { SheetModalComponent } from './components/sheet-modal/sheet-modal.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 
 
-const modules = [IonicModule, RouterModule, FormsModule, ReactiveFormsModule]
+const modules = [IonicModule, RouterModule, FormsModule, ReactiveFormsModule, TranslateModule]
 const components = [InputComponent, ButtonComponent, FloatingButtonComponent,CardComponent, ModalComponent, SheetModalComponent]
 const providers = [User]
 

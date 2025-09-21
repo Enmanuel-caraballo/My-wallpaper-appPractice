@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Auth } from 'src/app/core/providers/auth/auth';
 import { File } from 'src/app/core/providers/file/file';
 import { GlobalUrl } from 'src/app/core/providers/globalUrl/global-url';
+import { Language } from 'src/app/core/providers/language/language';
 import { UpLoader } from 'src/app/core/providers/upLoader/up-loader';
 import { IImage } from 'src/interfaces/image.interface';
 // import myCustomPlugin from 'src/app/plugins/myCustomPlugin';
@@ -24,10 +25,17 @@ export class HomePage implements OnInit {
     private readonly fileSrv: File,
     private readonly uploaderSrv: UpLoader,
     private readonly urlSrv: GlobalUrl,
+    private readonly langSrv: Language,
   ) { }
 
   ngOnInit() {
 
+  }
+
+  public languageChanger(event: any){
+    const el = event.currentTarget as HTMLElement;
+    const lang = el.getAttribute('data-lang');
+    this.langSrv.changeLang(lang ?? 'en');
   }
 
     public async logOut(){

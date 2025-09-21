@@ -1,12 +1,12 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>home</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
 
-
+  <div class="header">
+    <div class="p"><p>{{ 'WELCOME_MESSAGE' | translate }}</p></div>
+  <div class="languageContainer">
+    <ion-button (click)="languageChanger($event)"data-lang="en">Ingles</ion-button>
+    <ion-button (click)="languageChanger($event)"data-lang="es">Español</ion-button>
+  </div>
+  </div>
 <!-- <app-button
 value="Pick image"
 color="danger"
@@ -17,7 +17,7 @@ color="danger"
 
  <ion-card-content class="container-carta">
   <app-card>
-    
+
   </app-card>
 <!-- <ion-card *ngFor="let item of imgUrl; index as i"
 button id="open-modal" expand="block">

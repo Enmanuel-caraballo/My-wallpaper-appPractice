@@ -9,6 +9,8 @@ import { GlobalUrl } from 'src/app/core/providers/globalUrl/global-url';
 })
 export class CardComponent  implements OnInit {
   @Input() src: string = '';
+
+
   public imgUrl: string[] = [];
 
 
@@ -17,6 +19,10 @@ export class CardComponent  implements OnInit {
 
   ngOnInit() {
    this.imgUrl = this.urlSrv.getUrls();
+  }
+
+  setNewUrl(url: string){
+    this.urlSrv.setUrl(url);
   }
 
 }
