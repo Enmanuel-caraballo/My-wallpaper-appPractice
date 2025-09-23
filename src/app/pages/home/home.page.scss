@@ -1,16 +1,144 @@
+/*
+  Estilos para Home (dark tech)
+  - Fondo oscuro con sutiles brillos
+  - Acentos en azul eléctrico (#0ea5e9) y turquesa (#14b8a6)
+  - Glassmorphism discreto
+  - Animaciones suaves (respetando reduced-motion)
+*/
 
-.header{
-  width: 100%;
+/* Fondo general */
+ion-content {
+  --background: radial-gradient(900px 700px at 20% 0%, rgba(14, 165, 233, 0.08), transparent 50%),
+                linear-gradient(135deg, #0b0f14 0%, #000000 100%);
+  display: block;
+  min-height: 100%;
+  color: #e6eef6;
+}
+
+/* Cabecera */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 16px 20px;
+  margin: 16px;
+  border-radius: 14px;
+
+  background: rgba(20, 25, 33, 0.6);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  backdrop-filter: saturate(140%) blur(12px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.4),
+    0 1px 2px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+
+  animation: header-in 340ms ease;
+}
+
+/* Texto de bienvenida */
+.header .p p {
+  margin: 0;
+  font-size: clamp(18px, 2.2vw, 22px);
+  font-weight: 600;
+  color: #e6eef6;
+}
+
+/* Selector de idioma */
+.languageContainer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.languageContainer ion-button {
+  --border-radius: 10px;
+  --padding-start: 12px;
+  --padding-end: 12px;
+  --box-shadow: 0 6px 14px rgba(14, 165, 233, 0.25);
+  --background: linear-gradient(135deg, #0ea5e9, #14b8a6);
+  --color: #021014;
+  font-weight: 600;
+  transition: transform 140ms ease, box-shadow 140ms ease;
+}
+.languageContainer ion-button:hover {
+  transform: translateY(-1px);
+}
+.languageContainer ion-button:active {
+  transform: translateY(0);
+}
+.languageContainer ion-button:focus-visible {
+  outline: 3px solid rgba(14, 165, 233, 0.4);
+  outline-offset: 2px;
+}
+
+/* Contenedor de tarjetas */
+.container-carta {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  box-shadow: 0 10px 10px rgba(0,0,0, 0.4);
+  grid-template-columns: 1fr;
+  justify-items: center;
+  gap: 16px;
+  padding: 8px 16px 24px;
 }
 
-.p{
-  text-align: center;
-  color: rgb(93, 93, 150);
+/* Tarjeta */
+app-card {
+  display: block;
+  width: min(920px, 92vw);
+  min-height: 160px;
+  padding: 12px;
+
+  background: rgba(20, 25, 33, 0.6);
+  -webkit-backdrop-filter: saturate(140%) blur(12px);
+  backdrop-filter: saturate(140%) blur(12px);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.5),
+    0 1px 2px rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+
+  animation: card-in 340ms ease;
+  color: #dbeafe;
 }
 
-.languageContainer{
- justify-self: right;
+/* FABs */
+ion-fab {
+  margin: 0 8px 8px 0;
+}
+ion-fab app-floating-button + app-floating-button {
+  margin-top: 8px;
+}
+app-floating-button:focus-within {
+  outline: 3px solid rgba(14, 165, 233, 0.4);
+  outline-offset: 3px;
+  border-radius: 12px;
+}
+
+/* Tema Ionic */
+:host {
+  --ion-color-primary: #0ea5e9;
+  --ion-color-primary-rgb: 14, 165, 233;
+  --ion-color-primary-contrast: #ffffff;
+
+  --ion-color-secondary: #14b8a6;
+  --ion-color-secondary-rgb: 20, 184, 166;
+  --ion-color-secondary-contrast: #ffffff;
+
+  --ion-text-color: #e6eef6;
+  --ion-background-color: #0b0f14;
+}
+
+/* Animaciones */
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(8px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes header-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .header, app-card { animation: none; }
+  .languageContainer ion-button { transition: none; }
 }

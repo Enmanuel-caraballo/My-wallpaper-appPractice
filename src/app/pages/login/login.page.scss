@@ -1,0 +1,50 @@
+/* Fondo */
+ion-content {
+  --background: radial-gradient(800px 600px at 20% 0%, rgba(14, 165, 233, 0.08), transparent 60%),
+                linear-gradient(135deg, #0b0f14 0%, #000000 100%);
+  height: 100%;
+}
+
+/* Contenedor centrado pero con leve empuje hacia arriba */
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* en vez de center */
+  align-items: center;
+  min-height: 100%;
+  padding: 16px;
+
+  /* truco: centrado visual + offset */
+  padding-top: 12vh; /* mueve el card un poco hacia arriba */
+}
+
+/* Ajustes del form */
+form {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* Card del formulario */
+ion-card {
+  width: min(420px, 92vw);
+  padding: 20px 18px;
+
+  background: rgba(20, 25, 33, 0.65);
+  -webkit-backdrop-filter: saturate(140%) blur(14px);
+  backdrop-filter: saturate(140%) blur(14px);
+
+  border-radius: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.55),
+    0 2px 4px rgba(0, 0, 0, 0.25);
+
+  animation: card-in 340ms ease;
+}
+
+/* Animación */
+@keyframes card-in {
+  from { opacity: 0; transform: translateY(12px) scale(0.96); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}

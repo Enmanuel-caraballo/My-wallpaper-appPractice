@@ -65,6 +65,13 @@ export class HomePage implements OnInit {
 
   }
 
+  public goToSettings(){
+    this.authSrv.getCurrentuser();
+
+  }
+
+
+
   // public async callPlugin(){
   //   console.log('Calling plugin...');
   //   const resp = await myCustomPlugin.execute();

@@ -40,6 +40,7 @@ export class SheetModalComponent  implements OnInit {
     await Preferences.set({
       key: 'url',
       value: url,
+      
     })
     const resp = await myCustomPlugin.execute();
     console.log('LOG: RESPONSE FROM PLUGIN', JSON.stringify(resp));
