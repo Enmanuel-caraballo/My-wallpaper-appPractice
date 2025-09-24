@@ -11,6 +11,7 @@ import { NativeToast } from './providers/nativeToast/native-toast';
 import { File } from './providers/file/file';
 import { Capacitor} from '@capacitor/core'
 import { UpLoader } from './providers/upLoader/up-loader';
+import { AngularFireModule, FIREBASE_OPTIONS } from '@angular/fire/compat';
 
 
 const providers = [Auth, Query, NativeToast, File, UpLoader];
@@ -18,12 +19,15 @@ const providers = [Auth, Query, NativeToast, File, UpLoader];
 @NgModule({
   declarations: [],
   imports: [
-    CommonModule
+    CommonModule,
+    AngularFireModule.initializeApp(environment.FIREBASE_CONFIG),
   ],
   providers: [
+    { provide: FIREBASE_OPTIONS, useValue: environment.FIREBASE_CONFIG},
     provideFirebaseApp(()=>initializeApp(environment.FIREBASE_CONFIG)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+
     ...providers,
   ]
 })

@@ -14,9 +14,9 @@ import { TranslateModule } from '@ngx-translate/core';
 
 
 
-const modules = [IonicModule, RouterModule, FormsModule, ReactiveFormsModule, TranslateModule]
+const modules = [IonicModule, RouterModule, FormsModule, ReactiveFormsModule, TranslateModule,]
 const components = [InputComponent, ButtonComponent, FloatingButtonComponent,CardComponent, ModalComponent, SheetModalComponent]
-const providers = [User]
+const providers = [User,]
 
 @NgModule({
   declarations: [components],

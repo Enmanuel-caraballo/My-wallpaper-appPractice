@@ -1,9 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+import { user } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { Auth } from 'src/app/core/providers/auth/auth';
 import { File } from 'src/app/core/providers/file/file';
+import { GlobalUid } from 'src/app/core/providers/globalUid/global-uid';
 import { GlobalUrl } from 'src/app/core/providers/globalUrl/global-url';
+import { GlobalUser } from 'src/app/core/providers/globalUser/global-user';
 import { Language } from 'src/app/core/providers/language/language';
+import { Query } from 'src/app/core/providers/query/query';
 import { UpLoader } from 'src/app/core/providers/upLoader/up-loader';
 import { IImage } from 'src/interfaces/image.interface';
 // import myCustomPlugin from 'src/app/plugins/myCustomPlugin';
@@ -16,6 +20,8 @@ import { IImage } from 'src/interfaces/image.interface';
   standalone: false,
 })
 export class HomePage implements OnInit {
+  name: string = '';
+  lastName: string = '';
   public img!: IImage;
   // public imgUrl: string[] = [];
   public image: string = '';
@@ -26,6 +32,9 @@ export class HomePage implements OnInit {
     private readonly uploaderSrv: UpLoader,
     private readonly urlSrv: GlobalUrl,
     private readonly langSrv: Language,
+    private readonly globalUidSrv: GlobalUid,
+    private readonly querySrv: Query,
+    private readonly userSrv: GlobalUser
   ) { }
 
   ngOnInit() {
@@ -65,8 +74,32 @@ export class HomePage implements OnInit {
 
   }
 
-  public goToSettings(){
-    this.authSrv.getCurrentuser();
+  public async goToSettings(){
+  this.authSrv.getCurrentuser();
+
+   const uid = this.globalUidSrv.getUid();
+   console.log(uid);
+  const users =  await this.querySrv.getById('users', uid);
+
+    if (users) {
+      const user = users[0];
+
+      this.name = user.name;
+      console.log(this.name);
+
+      this.userSrv.setName(this.name);
+      console.log(user.name),
+
+      this.lastName = user.lastName;
+      console.log(this.lastName);
+
+      this.userSrv.setLastName(this.lastName);
+      console.log(user.lastName);
+
+        this.router.navigate(['/user-config'])
+     }
+
+
 
   }
 

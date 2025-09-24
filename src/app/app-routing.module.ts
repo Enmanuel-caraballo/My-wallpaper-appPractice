@@ -24,8 +24,13 @@ const routes: Routes = [
     path: 'home',
     loadChildren: () => import('./pages/home/home.module').then( m => m.HomePageModule),
         canActivate: [AuthGuard],
-    data: {authGuardPipe: isNotLoged},
-  },
+        data: {authGuardPipe: isNotLoged},
+      },
+      {
+        path: 'user-config',
+        loadChildren: () => import('./pages/configUser/user-config.module').then( m => m.UserConfigPageModule)
+      },
+
   {
     path: '**',
     redirectTo: 'login',

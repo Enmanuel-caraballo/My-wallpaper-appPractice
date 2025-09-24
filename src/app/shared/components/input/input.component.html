@@ -3,6 +3,7 @@
         [type]="type"
         [label]="label"
         [placeholder]="placeholder"
+        [value]="control.value || '' "
         labelPlacement="floating"
         (keyup) = 'onType($event);'
 >

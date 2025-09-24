@@ -16,10 +16,13 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
 import { CoreModule } from './core/core-module';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CoreModule],
+  imports: [BrowserModule, IonicModule.forRoot(), AppRoutingModule, CoreModule,
+  ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy},
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),

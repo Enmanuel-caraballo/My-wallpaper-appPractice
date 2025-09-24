@@ -36,25 +36,43 @@ public class MyCustomPlugin extends Plugin {
     System.out.println(sharedPreferences.getAll());
 
     String urlObject = sharedPreferences.getString("url", "none");
+
+    if(urlObject.equals("none")){
+      call.reject("Ninguna imagen");
+      return;
+    }
+    JSONObject url = new JSONObject(urlObject);
+    String signedUrl = url.getString("signedUrl");
+    String place = url.getString("place");
+    System.out.println(signedUrl);
+    System.out.println(place);
     System.out.println(urlObject);
 
      new Thread(()->{
        try{
          WallpaperManager wallpaperManager = WallpaperManager.getInstance(getContext());
-         Bitmap bitmap = downloadImage(urlObject);
+         Bitmap bitmap = downloadImage(signedUrl);
 
          if(bitmap != null){
-          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
-            wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_SYSTEM);
 
+          if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N){
+
+            if(place.equals("lock")){
+              wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_LOCK);
+            }else {
+              wallpaperManager.setBitmap(bitmap, null, true, WallpaperManager.FLAG_SYSTEM);
+            }
           }else{
             wallpaperManager.setBitmap(bitmap);
           }
            System.out.println("Fondo cambiado con exito");
 
-          JSObject result = new JSObject();
-          result.put("succes", true);
-          call.resolve(result);
+          getActivity().runOnUiThread(() -> {
+             JSObject result = new JSObject();
+             result.put("success", true);
+             call.resolve(result);
+           });
+
          }else{
            call.reject("No se puede descargar la imagen");
          }
@@ -80,8 +98,8 @@ public class MyCustomPlugin extends Plugin {
     }*/
 
     //Toast.show(getContext(), "image");
-    resp.put("message", "Hello world");
-    call.resolve(resp);
+    //resp.put("message", "Hello world");
+    //call.resolve(resp);
   }
 
   private Bitmap downloadImage(String signedUrl){
@@ -94,6 +112,8 @@ public class MyCustomPlugin extends Plugin {
       connection.connect();
 
       InputStream input = connection.getInputStream();
+      BitmapFactory.Options options = new BitmapFactory.Options();
+      options.inSampleSize = 2;
       return BitmapFactory.decodeStream(input);
     }catch (Exception e){
       e.printStackTrace();

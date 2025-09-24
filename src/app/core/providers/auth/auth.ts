@@ -3,16 +3,16 @@ import { Auth as AuthFirebase, createUserWithEmailAndPassword, signInWithEmailAn
   signOut
 } from '@angular/fire/auth';
 import { Router } from '@angular/router';
-import { GlobalUid } from '../globalUid/global-uid';
 import { getAuth } from '@angular/fire/auth';
-import { Firestore } from '@angular/fire/firestore';
-import { doc, getDoc, getFirestore } from 'firebase/firestore';
+import { GlobalUid } from '../globalUid/global-uid';
 
 @Injectable({
   providedIn: 'root'
 })
 export class Auth {
-    constructor(private readonly authFirebase: AuthFirebase, private readonly router: Router,
+    constructor(private readonly authFirebase: AuthFirebase,
+      private readonly router: Router,
+      private readonly globaUidSrv: GlobalUid,
 
   ){}
 
@@ -53,9 +53,7 @@ export class Auth {
       if(user){
 
         const uid = user.uid;
-        console.log(uid);
-
-
+        this.globaUidSrv.setUid(uid);
 
       }else{
         console.log("No hay usuario autenticado");

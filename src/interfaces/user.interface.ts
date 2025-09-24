@@ -7,5 +7,7 @@ export interface IUser{
 }
 
 export interface IAuth extends Pick<IUser, 'email' | 'password'>{}
+export interface IUserModify extends Pick<IUser, 'name' | 'lastName'>{}
 
 export interface IUserCreate extends Omit<IUser, 'uid'>{}
+

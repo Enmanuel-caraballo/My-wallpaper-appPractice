@@ -1,0 +1,84 @@
+<ion-content [fullscreen]="true">
+  <form [formGroup]="modifyForm">
+
+    <ion-card>
+
+        <ion-row>
+          <ion-col>
+            <app-input
+            type="text"
+            label="Name"
+            placeholder="Enmanuel"
+            labelPlacement="floating"
+            [control]="name"
+            >
+            </app-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <app-input
+            type="text"
+            label="Last name"
+            placeholder="Caraballo"
+            labelPlacement="floating"
+            [control]="lastName"
+            >
+            </app-input>
+          </ion-col>
+        </ion-row>
+        <!-- <ion-row>
+          <ion-col>
+            <app-input
+            type="email"
+            label="Email"
+            placeholder="exampleEmail@gmail.com"
+            labelPlacement="floating"
+
+            >
+            </app-input>
+          </ion-col>
+        </ion-row>
+
+
+        <ion-row>
+          <ion-col>
+            <app-input
+            type="password"
+            label="Password"
+            placeholder="**************"
+            labelPlacement="floating"
+
+            >
+
+            </app-input>
+            </ion-col>
+        </ion-row> -->
+<!-- 
+        <ion-row>
+          <ion-col>
+
+            <app-button
+            type="submit"
+            color="primary"
+            routerLink="/home"
+            value="Log in">
+            </app-button>
+
+            </ion-col>
+        </ion-row> -->
+
+        <ion-row>
+          <ion-col>
+   <a routerLink="/home">
+              Regresar.
+            </a>
+          </ion-col>
+        </ion-row>
+
+
+    </ion-card>
+
+  </form>
+
+</ion-content>
